@@ -11,6 +11,7 @@ public class Contador  {
 			"Pt","Pb","Pu","Po","Pr","Pm","Pa","Ra","Rn","Re","Rh","Rb","Ru","Rf","Sm","Sg","Se","Si","Na","Tl","Ta","Tc","Te","Tb",
 			"Ti","Th","Tm","Xe","Zn","Zr"};
 	String elementos3[]={"S","s","B","b","C","c","F","f","P","p","H","h","I","i","Y","y","N","n","O","o","K","k","U","u","V","v","W","w","@"};
+	
 	public Contador(String compuesto) {
 		super();
 		
@@ -29,14 +30,8 @@ public class Contador  {
 
 	void conteoElementos(){
 
-
-
-
-
-
 		int h=0;
-		
-			
+				
 
 		while(h!=compuesto.length())
 		{
