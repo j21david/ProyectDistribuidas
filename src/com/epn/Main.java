@@ -15,6 +15,7 @@ public class Main {
 		Calculadora calc=new Calculadora(1000,r.getCompuestos());
 
 		System.out.println(""+calc.result()[50][50]);
+		//hola
 		
 	}
 
