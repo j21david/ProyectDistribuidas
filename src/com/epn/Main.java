@@ -44,7 +44,7 @@ public class Main {
 		ArrayList<Quimico> arrayList = new ArrayList<Quimico>();
 		 
 		for(int i=0;i<40;i++){
-			for(int j=0;j<40;j++){
+			for(int j=i;j<40;j++){
 				
 				//System.out.print(String.format("%.2f ",calc.result()[i][j]));
 				if(matriz[i][j]>0.5){
