@@ -5,12 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
+import static com.epn.Main.Compuestos;
+import static com.epn.Main.Ids;
 
 public class Lector {
 
 	String archivo="C:/Users/Jose/Documents/ZINC_chemicals.tsv";
-	String Compuestos[] = new String[12384];
-	String Ids[]=new String[12384];
+
 	
 	public String[] getIds() {
 		return Ids;
@@ -44,16 +45,14 @@ public class Lector {
         FileReader f = new FileReader(archivo);
         BufferedReader b = new BufferedReader(f);
         cadena = b.readLine();
-        for(int i=0;i<12384;i++){
-        //while((cadena = b.readLine())!=null) {
+        for(int i=0;i<12422;i++){
         	cadena = b.readLine();
         	StringTokenizer tokens=new StringTokenizer(cadena);
         			tokens.nextToken();
         			tokens.nextToken();
         			tokens.nextToken();
                     Compuestos[i]=tokens.nextToken();
-               
-            //System.out.println(cadena);
+  
         }
         b.close();
     }
@@ -62,14 +61,14 @@ public class Lector {
         FileReader f = new FileReader(archivo);
         BufferedReader b = new BufferedReader(f);
         cadena = b.readLine();
-        for(int i=0;i<12384;i++){
-        //while((cadena = b.readLine())!=null) {
+        for(int i=0;i<12422;i++){
+
         	cadena = b.readLine();
         	StringTokenizer tokens=new StringTokenizer(cadena);
         			tokens.nextToken();        		
                     Ids[i]=tokens.nextToken();
                
-            //System.out.println(cadena);
+           
         }
         b.close();
     }

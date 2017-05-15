@@ -27,10 +27,12 @@ public class Quimico implements Comparable<Quimico>{
 	}
 	@Override
 	public int compareTo(Quimico o) {
-		 int byAge = Float.compare(o.resultado, resultado);
+	 
+		int byAge = Float.compare(o.resultado, resultado);
 	        if ( byAge != 0 ) {
 	            return byAge;
 	        }
+	   
 	        if ( Compuesto1 == null ) {
 	            return o.Compuesto1 == null ? 0 : 1;
 	        }

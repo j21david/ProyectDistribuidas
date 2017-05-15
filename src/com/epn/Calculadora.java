@@ -21,10 +21,12 @@ public class Calculadora {
 	public float[][] result(){
 	
 		for(int i=0;i<limit;i++){
-			for(int j=+i;j<limit;j++){
+			for(int j=i;j<limit;j++){
 				Contador c = new Contador(compuestos[i]+" ");
 				Contador c1 = new Contador(compuestos[j]+" ");
+			
 				Comparador fin = new Comparador(c.getConteo(), c1.getConteo(), c.numeroElementos(), c1.numeroElementos());
+				System.out.print("\n"+ c.numeroElementos()+" \n "+ c1.numeroElementos()+"\n"+fin.formula());
 				matriz[i][j]=fin.formula();
 				matriz[j][i]=fin.formula();
 				

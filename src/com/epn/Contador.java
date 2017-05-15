@@ -31,13 +31,13 @@ public class Contador  {
 	void conteoElementos(){
 
 		int h=0;
-				
+			
 
 		while(h!=compuesto.length())
 		{
 
 
-			for(int i =0;i<8;i++)
+			for(int i =0;i<elementos1.length;i++)
 				{
 			
 				if(compuesto.charAt(0+h)==elementos1[i].charAt(0)&&compuesto.charAt(1+h)==elementos1[i].charAt(1)&&compuesto.charAt(2+h)==elementos1[i].charAt(2))
@@ -49,7 +49,7 @@ public class Contador  {
 					}
 				}
 
-			for(int i =0;i<95;i++)
+			for(int i =0;i<elementos2.length;i++)
 				{
 
 				if(compuesto.charAt(0+h)==elementos2[i].charAt(0)&&compuesto.charAt(1+h)==elementos2[i].charAt(1))
@@ -63,7 +63,7 @@ public class Contador  {
 
 
 
-			for(int i =0;i<29;i++)
+			for(int i =0;i<elementos3.length;i++)
 				{
 
 
@@ -86,6 +86,8 @@ public class Contador  {
 			h++;
 		
 		}
+		
+
 	}
 	
 	int numeroElementos()

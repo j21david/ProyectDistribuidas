@@ -38,7 +38,8 @@ public class Comparador {
 
 	float formula(){
 
-		float result=(this.similitud()/(Na+Nb-this.similitud()));
+		float Nc=this.similitud();
+		float result=(Nc/(Na+Nb-Nc));
 
 		return result;
 

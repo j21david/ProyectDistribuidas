@@ -10,8 +10,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 
+
+import org.omg.CosNaming.BindingListHelper;
+
 public class Main {
-	public static float matriz[][]=new float[12384][12384];
+	public static float matriz[][]=new float[12422][12422];
+	public static String Compuestos[]=new String[12422];
+	public static String Ids[]=new String[12422];
+	
 	public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException {
 		// TODO Auto-generated method stub
 
@@ -22,13 +28,14 @@ public class Main {
 
 		Lector r = new Lector();
 		
-		Calculadora calc=new Calculadora(40,r.getCompuestos());
-		
+		//Calculadora calc=new Calculadora(2,r.getCompuestos());
+		Redactor c = new Redactor();
 
-		Thread t0 = new Thread(new MiThread(0,r.getCompuestos()));
-		Thread t1 = new Thread(new MiThread(10,r.getCompuestos()));
-		Thread t2 = new Thread(new MiThread(20,r.getCompuestos()));
-		Thread t3 = new Thread(new MiThread(30,r.getCompuestos()));
+		
+		Thread t0 = new Thread(new MiThread(0,1000));
+		Thread t1 = new Thread(new MiThread(1000,1000));
+		Thread t2 = new Thread(new MiThread(2000,1000));
+		Thread t3 = new Thread(new MiThread(3000,1000));
 		t0.start();
 		t1.start();
 		t2.start();
@@ -39,33 +46,40 @@ public class Main {
 		t2.join();
 		t3.join();
 		
-		Redactor c = new Redactor();
-		Lector l = new Lector();
+		
+		
 		ArrayList<Quimico> arrayList = new ArrayList<Quimico>();
-		 
-		for(int i=0;i<40;i++){
-			for(int j=i;j<40;j++){
+		arrayList.ensureCapacity(7900000);
+		for(int i=0;i<4000;i++){
+			for(int j=i+1;j<4000;j++){
 				
-				//System.out.print(String.format("%.2f ",calc.result()[i][j]));
-				if(matriz[i][j]>0.5){
-					 Quimico  k= new Quimico();
-					k.setCompuesto1(l.Ids[i]);
-					k.setCompuesto2(l.Ids[j]);
+
+				if(matriz[i][j]>=0.5){
+					
+				
+					//c.escribir(l.Ids[i],l.Ids[j],String.format("%.2f ",matriz[i][j]));
+					Quimico  k= new Quimico();
+					k.setCompuesto1(Ids[i]);
+					k.setCompuesto2(Ids[j]);
 					k.setResultado(matriz[i][j]);
 					arrayList.add(k);
-					
-				//c.escribir(l.Ids[i],l.Ids[j],String.format("%.2f ",matriz[i][j]));
+			
+		
 				}
-			}
+			}System.out.print(""+i+"\n");
 		}
+		
+		//Ordenar la lista
+		//arrayList.ensureCapacity(7900000);
 		Collections.sort(arrayList);
 		
 		Iterator itListaempleado=arrayList.iterator();
         
-        //imprime la lista sin ordenar
+        //imprime la lista ordenada
         while (itListaempleado.hasNext()) {
             Quimico elementoLista=(Quimico)itListaempleado.next();
-
+           
+            //System.out.println(" "+elementoLista.getCompuesto1()+"    "+elementoLista.getCompuesto2()+"  "+elementoLista.getResultado());
             c.escribir(elementoLista.getCompuesto1(),elementoLista.getCompuesto2(),String.format("%.2f ",elementoLista.getResultado()));
         }
 	
@@ -75,3 +89,9 @@ public class Main {
 	}
 
 }
+//198569
+//[O-]C(=O)[C@H](c1ccc(cc1)c1ccccc1)C 						=2(O)+12(c)+1(@)+3(C)+1(H)=19
+//Fc1ccc(cc1)C(c1ccc(cc1)F)OC1C[C@@H]2CC[C@H](C1)[NH+]2C	 = 2(F)+9(C)+12(c)+3(H)+1(N)+1(@)=28       =12+1+3+1=16
+
+//
+
