@@ -14,28 +14,39 @@ import java.util.Iterator;
 import org.omg.CosNaming.BindingListHelper;
 
 public class Main {
-	public static float matriz[][]=new float[12422][12422];
-	public static String Compuestos[]=new String[12422];
-	public static String Ids[]=new String[12422];
+	public final static int limite = 4000;
+	public static float matriz[][]=new float[limite][limite];
+	public static String Compuestos[]=new String[limite];
+	public static String Ids[]=new String[limite];
+	
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException {
 		// TODO Auto-generated method stub
 
 		
 		long time_start, time_end;
-		time_start = System.currentTimeMillis()/1000;
+		time_start = System.currentTimeMillis();
 		
 
 		Lector r = new Lector();
 		
-		//Calculadora calc=new Calculadora(2,r.getCompuestos());
+		//Calculadora calc=new Calculadora(limite,Compuestos);
+		
+		//calc.result();
 		Redactor c = new Redactor();
 
 		
-		Thread t0 = new Thread(new MiThread(0,1000));
-		Thread t1 = new Thread(new MiThread(1000,1000));
-		Thread t2 = new Thread(new MiThread(2000,1000));
-		Thread t3 = new Thread(new MiThread(3000,1000));
+	/*	
+		Thread t0 = new Thread(new MiThread(0,1606));
+		Thread t1 = new Thread(new MiThread(1606,3512));
+		Thread t2 = new Thread(new MiThread(3512,5995));
+		Thread t3 = new Thread(new MiThread(5995,12000));
+		*/
+		Thread t0 = new Thread(new MiThread(0,534));
+		Thread t1 = new Thread(new MiThread(534,1169));
+		Thread t2 = new Thread(new MiThread(1169,1996));
+		Thread t3 = new Thread(new MiThread(1996,4000));
+		
 		t0.start();
 		t1.start();
 		t2.start();
@@ -45,14 +56,15 @@ public class Main {
 		t1.join();
 		t2.join();
 		t3.join();
-		
-		
+		time_end = System.currentTimeMillis();
+		System.out.println("the task has taken "+ ( time_end - time_start ) +" miliseconds");
+	/*
 		
 		ArrayList<Quimico> arrayList = new ArrayList<Quimico>();
 		arrayList.ensureCapacity(7900000);
-		for(int i=0;i<4000;i++){
-			for(int j=i+1;j<4000;j++){
-				
+		for(int i=0;i<limite;i++){
+			for(int j=i+1;j<limite;j++){
+				System.out.println(" "+matriz[i][j]);
 
 				if(matriz[i][j]>=0.5){
 					
@@ -66,12 +78,14 @@ public class Main {
 			
 		
 				}
-			}System.out.print(""+i+"\n");
+			}//System.out.print(""+i+"\n");
 		}
 		
 		//Ordenar la lista
 		//arrayList.ensureCapacity(7900000);
 		Collections.sort(arrayList);
+		
+
 		
 		Iterator itListaempleado=arrayList.iterator();
         
@@ -79,19 +93,12 @@ public class Main {
         while (itListaempleado.hasNext()) {
             Quimico elementoLista=(Quimico)itListaempleado.next();
            
-            //System.out.println(" "+elementoLista.getCompuesto1()+"    "+elementoLista.getCompuesto2()+"  "+elementoLista.getResultado());
-            c.escribir(elementoLista.getCompuesto1(),elementoLista.getCompuesto2(),String.format("%.2f ",elementoLista.getResultado()));
+            System.out.println(" "+elementoLista.getCompuesto1()+"    "+elementoLista.getCompuesto2()+"  "+elementoLista.getResultado());
+            //c.escribir(elementoLista.getCompuesto1(),elementoLista.getCompuesto2(),String.format("%.2f ",elementoLista.getResultado()));
         }
 	
-		time_end = System.currentTimeMillis()/1000;
-		System.out.println("the task has taken "+ ( time_end - time_start ) +" seconds");
+		*/
 
 	}
 
 }
-//198569
-//[O-]C(=O)[C@H](c1ccc(cc1)c1ccccc1)C 						=2(O)+12(c)+1(@)+3(C)+1(H)=19
-//Fc1ccc(cc1)C(c1ccc(cc1)F)OC1C[C@@H]2CC[C@H](C1)[NH+]2C	 = 2(F)+9(C)+12(c)+3(H)+1(N)+1(@)=28       =12+1+3+1=16
-
-//
-

@@ -1,10 +1,10 @@
 package com.epn;
 
-
+import static com.epn.Main.matriz;
 public class Calculadora {
 
 	
-	float matriz[][] = new float [40][40];
+	//float matriz[][] = new float [40][40];
 	int limit;
 	String compuestos[]= new String [12384];
 	
@@ -20,8 +20,8 @@ public class Calculadora {
 
 	public float[][] result(){
 	
-		for(int i=0;i<limit;i++){
-			for(int j=i;j<limit;j++){
+		for(int i=0;i<7;i++){
+			for(int j=i+1;j<7;j++){
 				Contador c = new Contador(compuestos[i]+" ");
 				Contador c1 = new Contador(compuestos[j]+" ");
 			

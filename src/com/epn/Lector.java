@@ -1,13 +1,14 @@
 package com.epn;
 
 import java.io.BufferedReader;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
 import static com.epn.Main.Compuestos;
 import static com.epn.Main.Ids;
-
+import static com.epn.Main.limite;
 public class Lector {
 
 	String archivo="C:/Users/Jose/Documents/ZINC_chemicals.tsv";
@@ -45,7 +46,7 @@ public class Lector {
         FileReader f = new FileReader(archivo);
         BufferedReader b = new BufferedReader(f);
         cadena = b.readLine();
-        for(int i=0;i<12422;i++){
+        for(int i=0;i<limite;i++){
         	cadena = b.readLine();
         	StringTokenizer tokens=new StringTokenizer(cadena);
         			tokens.nextToken();
@@ -61,7 +62,7 @@ public class Lector {
         FileReader f = new FileReader(archivo);
         BufferedReader b = new BufferedReader(f);
         cadena = b.readLine();
-        for(int i=0;i<12422;i++){
+        for(int i=0;i<limite;i++){
 
         	cadena = b.readLine();
         	StringTokenizer tokens=new StringTokenizer(cadena);
